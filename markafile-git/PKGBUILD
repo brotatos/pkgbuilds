@@ -1,6 +1,6 @@
 # Maintainer: Robin Choudhury <rchoudhu@calpoly.edu>
 pkgname=NAME-git
-pkgver=20121230
+pkgver=20130103
 pkgrel=1
 pkgdesc="File tagging for *nix operating systems"
 arch=('any')
