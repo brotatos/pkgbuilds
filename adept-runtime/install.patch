@@ -1,0 +1,10 @@
+--- /home/robin/github/pkgbuilds/adept-runtime/src/digilent.adept.runtime_2.13.1-x86_64/install.sh	2013-07-04 17:05:47.615822336 -0700
++++ install_new.sh	2013-07-04 17:08:28.315830404 -0700
+@@ -1536,7 +1536,6 @@
+ 		then
+ 			# We determine the correct command to use. Now attempt to
+ 			# reload the rules.
+-			${szUdrrcmd}
+ 			if (( $? ))
+ 			then
+ 				echo "error: failed to reload UDEV reules. Please reboot your "

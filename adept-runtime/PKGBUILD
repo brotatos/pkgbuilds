@@ -1,0 +1,60 @@
+# Maintainer: Robin Choudhury <rchoudhu@calpoly.edu>
+pkgname=adept-runtime
+pkgver=2.13.1
+pkgrel=1
+pkgdesc="Digilent Adept is a unique and powerful solution which allows you to communicate with Digilent system boards and a wide assortment of logic devices."
+arch=('i686' 'x86_64')
+url="http://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2"
+license=('unknown')
+groups=('adept')
+depends=()
+makedepends=(libusbx)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+
+name="digilent.adept.runtime_"
+
+_source_arch="x86_64"
+[ "$CARCH" = "i686" ] && _source_arch="i686"
+source=("http://www.digilentinc.com/Data/Products/ADEPT2/digilent.adept.runtime_$pkgver-${_source_arch}.tar.gz")
+
+md5sums=('091655dbe852e4eb6fe930668b483570') #generate with 'makepkg -g'
+
+_runtimepath="$srcdir/$name$pkgver-${_source_arch}"
+
+prepare() {
+   cd "$srcdir/$_runtimepath"
+   # patch files here
+   # urxvt-tabbedex uses a patch
+   # how to generate a pacth:
+   #  diff -u /original/file/location /edited/file/location > patch_file_name.patch
+   #  patch /file/that/will/be/patched < location/of/patch/file.patch
+   patch install.sh < ../../install.patch
+}
+
+package() {
+   _datapath="$pkgdir/usr/local/share/digilent/data"
+   _sbinpath="$pkgdir/sbin"
+   _runtimepath="$srcdir/$name$pkgver-${_source_arch}"
+
+   if [ "$CARCH" == "i686" ]; then
+      _libpath="$pkgdir/lib/"
+   else
+      _libpath="$pkgdir/lib64/"
+   fi
+
+   cd "$_runtimepath"
+
+   ./install.sh datapath="$_datapath" libpath="$_libpath" sbinpath="$_sbinpath" silent=1
+   install "$_runtimepath/digilent-adept.conf" "$pkgdir/etc/"
+   install "$_runtimepath/52-digilent-usb.rules" "$pkgdir/etc/udev/rules.d/52-digilent-usb.rules"
+   install "$_runtimepath/digilent-adept-libraries.conf" "$pkgdir/etc/ld.so.conf.d/digilent-adept-libraries.conf"
+   udevadm control --reload-rules
+}

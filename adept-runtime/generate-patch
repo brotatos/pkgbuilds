@@ -1,0 +1,16 @@
+#!/bin/bash
+
+name="digilent.adept.runtime_"
+pkgver=2.13.1
+_source_arch="x86_64"
+srcdir="$PWD/src"
+
+_runtimepath="$srcdir/$name$pkgver-${_source_arch}"
+
+
+if [ -f install_new.sh ]; then
+   diff -u "$_runtimepath/install.sh" "install_new.sh" > install.patch
+else
+   cp "$_runtimepath/install_new.sh" .
+   diff -u "$_runtimepath/install.sh" "$_runtimepath/install_new.sh" > install.patch
+fi
