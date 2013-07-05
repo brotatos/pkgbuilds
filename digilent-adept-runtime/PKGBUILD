@@ -1,5 +1,5 @@
 # Maintainer: Robin Choudhury <rchoudhu@calpoly.edu>
-pkgname=digilent-adept
+pkgname=digilent-adept-runtime
 pkgver=2.13.1
 pkgrel=1
 pkgdesc="Digilent Adept is a unique and powerful solution which allows you to communicate with Digilent system boards and a wide assortment of logic devices."
