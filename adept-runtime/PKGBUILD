@@ -53,8 +53,14 @@ package() {
    cd "$_runtimepath"
 
    ./install.sh datapath="$_datapath" libpath="$_libpath" sbinpath="$_sbinpath" silent=1
-   install "$_runtimepath/digilent-adept.conf" "$pkgdir/etc/"
-   install "$_runtimepath/52-digilent-usb.rules" "$pkgdir/etc/udev/rules.d/52-digilent-usb.rules"
-   install "$_runtimepath/digilent-adept-libraries.conf" "$pkgdir/etc/ld.so.conf.d/digilent-adept-libraries.conf"
+   # install: target ‘/home/robin/github/pkgbuilds/adept-runtime/pkg/adept-runtime/etc/’ is not a directory: No such file or directory
+   #mkdir -p "$pkgdir/etc/"
+   install -m 644 -D digilent-adept.conf "$pkgdir/etc/" &&
+   install -m 644 -D 52-digilent-usb.rules "$pkgdir/etc/udev/rules.d/" &&
+   install -m 644 -D digilent-adept-libraries.conf "$pkgdir/etc/ld.so.conf.d/"
+}
+
+post_install() {
    udevadm control --reload-rules
+   /sbin/ldconfig
 }

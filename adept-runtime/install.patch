@@ -1,10 +1,38 @@
---- /home/robin/github/pkgbuilds/adept-runtime/src/digilent.adept.runtime_2.13.1-x86_64/install.sh	2013-07-04 17:05:47.615822336 -0700
-+++ install_new.sh	2013-07-04 17:08:28.315830404 -0700
-@@ -1536,7 +1536,6 @@
+--- /home/robin/github/pkgbuilds/adept-runtime/src/digilent.adept.runtime_2.13.1-x86_64/install.sh	2013-07-04 17:12:44.902509955 -0700
++++ install_new.sh	2013-07-04 17:15:49.612519229 -0700
+@@ -997,9 +997,6 @@
+ 
+ echo "Installing Adept Runtime configuration....."
+ 
+-cp -f ${szAdcSrc} ${szAdcDst} && \
+-chmod 644 ${szAdcDst}/$(basename ${szAdcSrc})
+-
+ if (( $? ))
+ then
+ 	
+@@ -1228,8 +1225,6 @@
+ 	then
+ 		echo "Installing USB UDEV rules....."
+ 	
+-		cp -f ${szUurSrc} ${szUurDst} && \
+-		chmod 644 ${szUurDst}
+ 	
+ 		if (( $? ))
  		then
- 			# We determine the correct command to use. Now attempt to
- 			# reload the rules.
--			${szUdrrcmd}
- 			if (( $? ))
- 			then
- 				echo "error: failed to reload UDEV reules. Please reboot your "
+@@ -1492,8 +1487,6 @@
+ then
+ 	echo "Installing dynamic loader configuration....."
+ 
+-	cp -f "${szDlcSrc}" "${szDlcDst}" && \
+-	chmod 644 "${szDlcDst}/$(basename ${szDlcSrc})"
+ 	if (( $? ))
+ 	then
+ 		echo "error: failed to install dynamic loader configuration. Please see the documentation for instructions on manual installation."
+@@ -1568,7 +1561,6 @@
+ if [ -n "${szDlcSrc}" ]
+ then
+ 
+-	/sbin/ldconfig
+ 	if (( $? ))
+ 	then
+ 		echo "error: failed to update dynamic loader cache. Please reboot your system after installation completes"
