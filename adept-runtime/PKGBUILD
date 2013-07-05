@@ -1,5 +1,5 @@
 # Maintainer: Robin Choudhury <rchoudhu@calpoly.edu>
-pkgname=adept-runtime
+pkgname=digilent-adept
 pkgver=2.13.1
 pkgrel=1
 pkgdesc="Digilent Adept is a unique and powerful solution which allows you to communicate with Digilent system boards and a wide assortment of logic devices."
@@ -9,15 +9,6 @@ license=('unknown')
 groups=('adept')
 depends=()
 makedepends=(libusbx)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 
 name="digilent.adept.runtime_"
 
@@ -31,11 +22,6 @@ _runtimepath="$srcdir/$name$pkgver-${_source_arch}"
 
 prepare() {
    cd "$srcdir/$_runtimepath"
-   # patch files here
-   # urxvt-tabbedex uses a patch
-   # how to generate a pacth:
-   #  diff -u /original/file/location /edited/file/location > patch_file_name.patch
-   #  patch /file/that/will/be/patched < location/of/patch/file.patch
    patch install.sh < ../../install.patch
 }
 
