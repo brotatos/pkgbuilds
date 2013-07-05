@@ -7,8 +7,10 @@ arch=('i686' 'x86_64')
 url="http://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2"
 license=('unknown')
 groups=('adept')
-depends=()
 makedepends=(libusbx)
+provides=('digilent-adept-runtime')
+conflicts=('digilent-adept-runtime')
+replaces=('digilent-adept-runtime')
 
 name="digilent.adept.runtime_"
 
