@@ -54,10 +54,10 @@ package() {
 
    ./install.sh datapath="$_datapath" libpath="$_libpath" sbinpath="$_sbinpath" silent=1
    # install: target ‘/home/robin/github/pkgbuilds/adept-runtime/pkg/adept-runtime/etc/’ is not a directory: No such file or directory
-   #mkdir -p "$pkgdir/etc/"
-   install -m 644 -D digilent-adept.conf "$pkgdir/etc/" &&
-   install -m 644 -D 52-digilent-usb.rules "$pkgdir/etc/udev/rules.d/" &&
-   install -m 644 -D digilent-adept-libraries.conf "$pkgdir/etc/ld.so.conf.d/"
+   install -m 644 -D digilent-adept.conf "$pkgdir/etc/digilent-adept.conf" &&
+   install -m 644 -D 52-digilent-usb.rules "$pkgdir/etc/udev/rules.d/52-digilent-usb.rules" &&
+   install -m 644 -D digilent-adept-libraries.conf "$pkgdir/etc/ld.so.conf.d/digilent-adept-libraries.conf"
+   sed -i 's/DigilentDataPath\=\/.*/DigilentDataPath=/usr/local/share/digilent/data' $pkgdir/etc/digilent-adept.conf
 }
 
 post_install() {
