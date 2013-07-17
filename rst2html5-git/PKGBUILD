@@ -13,7 +13,7 @@ conflicts=('rst2html5')
 
 source=("https://github.com/marianoguerra/rst2html5.git")
 noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
+md5sums=('6f07096eef2facc12736b8fa280025a5')
 
 _gitname='rst2html5'
 
