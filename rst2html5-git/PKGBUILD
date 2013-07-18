@@ -8,8 +8,8 @@ url="https://github.com/marianoguerra/rst2html5"
 license=('unkown')
 depends=('python2' 'python2-docutils')
 makedepends=('git')
-provides=('rst2html5')
-conflicts=('rst2html5')
+provides=('rst2html5-git')
+conflicts=('rst2html5-git')
 
 source=("https://github.com/marianoguerra/rst2html5.git")
 noextract=()
