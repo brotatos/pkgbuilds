@@ -7,8 +7,8 @@ pkgdesc="A simple caesar cipher."
 arch=('i686' 'x86_64')
 url="https://github.com/brotatos/caesar"
 license=('MIT')
-conflicts=('cower')
-provides=('cower')
+conflicts=('caesar')
+provides=('caesar')
 
 _gitroot="git://github.com/brotatos/caesar.git"
 _gitname="caesar"
